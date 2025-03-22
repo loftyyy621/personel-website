@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emre Can - Personal Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #0f0f0f;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #121212, #2d1b4e);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Enhanced background with animated gradient */
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(125deg, #121212, #2d1b4e, #1a0d2e, #3a1c67);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            z-index: 0;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: logoGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes logoGlow {
+            0% { text-shadow: 0 0 5px rgba(255, 126, 95, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(255, 126, 95, 0.8); }
+            100% { text-shadow: 0 0 5px rgba(255, 126, 95, 0.5); }
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            transform: translateY(-3px);
+            color: #ff7e5f;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            z-index: 1;
+            padding: 0 20px;
+        }
+        
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            position: relative;
+            margin-bottom: 30px;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(255, 126, 95, 0.5);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+        
+        .profile-img::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff7e5f, #feb47b, #ff7e5f);
+            z-index: -1;
+            animation: rotate 3s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .profile-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(255, 126, 95, 0.8);
+        }
+        
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        
+        .hero h1 {
+            font-size: 64px;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: float 4s ease-in-out infinite;
+            text-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+            color: #cccccc;
+            position: relative;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .social-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ff7e5f, #feb47b);
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.4s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .social-icon:hover::before {
+            opacity: 1;
+        }
+        
+        .social-icon svg {
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        
+        .social-icon:hover svg {
+            transform: scale(1.2);
+            color: white !important;
+        }
+        
+        .shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+        
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            animation: float-shapes 15s infinite;
+        }
+        
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            top: -150px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+        
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            bottom: -80px;
+            right: 100px;
+            animation-delay: 2s;
+        }
+        
+        .shape-3 {
+            width: 150px;
+            height: 150px;
+            bottom: 150px;
+            left: 200px;
+            animation-delay: 4s;
+        }
+        
+        .shape-4 {
+            width: 100px;
+            height: 100px;
+            top: 200px;
+            right: 200px;
+            animation-delay: 6s;
+        }
+        
+        /* Additional animated shapes */
+        .shape-5 {
+            width: 120px;
+            height: 120px;
+            top: 40%;
+            left: 15%;
+            animation-delay: 7s;
+            animation-duration: 18s;
+            background: linear-gradient(45deg, rgba(255, 126, 95, 0.05), rgba(254, 180, 123, 0.05));
+        }
+        
+        .shape-6 {
+            width: 180px;
+            height: 180px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 3s;
+            animation-duration: 20s;
+            background: linear-gradient(45deg, rgba(255, 126, 95, 0.05), rgba(254, 180, 123, 0.05));
+        }
+        
+        @keyframes float-shapes {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0.5; }
+            33% { transform: translateY(-50px) rotate(10deg); opacity: 0.7; }
+            66% { transform: translateY(30px) rotate(-15deg); opacity: 0.6; }
+            100% { transform: translateY(0) rotate(0deg); opacity: 0.5; }
+        }
+        
+        .about {
+            padding: 120px 0;
+            background-color: #121212;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(45, 27, 78, 0.2), transparent 50%);
+            z-index: 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 48px;
+            margin-bottom: 60px;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+        }
+        
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .about-text {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+            color: #cccccc;
+            font-size: 18px;
+        }
+        
+        .bio-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 50px;
+            max-width: 600px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .bio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .bio-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+        }
+        
+        .bio-card h3 {
+            margin-bottom: 25px;
+            font-size: 28px;
+            color: #ffffff;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .bio-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            transition: width 0.5s ease;
+        }
+        
+        .bio-card:hover h3::after {
+            width: 100%;
+        }
+        
+        .bio-item {
+            display: flex;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .bio-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .bio-icon {
+            width: 30px;
+            margin-right: 20px;
+            color: #ff7e5f;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        
+        .bio-item:hover .bio-icon {
+            transform: scale(1.2);
+            color: #feb47b;
+        }
+        
+        .bio-info {
+            text-align: left;
+            color: #cccccc;
+            transition: color 0.3s ease;
+        }
+        
+        .bio-item:hover .bio-info {
+            color: #ffffff;
+        }
+        
+        footer {
+            background-color: #0a0a0a;
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 70% 30%, rgba(45, 27, 78, 0.1), transparent 70%);
+            z-index: 0;
+        }
+        
+        .footer-text {
+            color: #666;
+            font-size: 14px;
+            position: relative;
+            z-index: 1;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-text:hover {
+            color: #999;
+        }
+        
+        /* Enhanced animations */
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+        
+        .animated-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .typewriter-container {
+            height: 60px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .typewriter {
+            overflow: hidden;
+            border-right: 3px solid #ff7e5f;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: 3px;
+            animation: typing 4s steps(40, end) 1s 1 normal both,
+                       blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #ff7e5f; }
+        }
+        
+        /* Floating particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: rgba(255, 126, 95, 0.3);
+            border-radius: 50%;
+            animation: particle-float 15s infinite linear;
+        }
+        
+        @keyframes particle-float {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+        
+        /* Glow effects */
+        .glow-effect {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .glow-effect::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            box-shadow: 0 0 30px 10px rgba(255, 126, 95, 0.1);
+            border-radius: 50%;
+            z-index: -1;
+            animation: pulse 3s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.5; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            100% { transform: scale(0.95); opacity: 0.5; }
+        }
+        
+        /* Hover effects */
+        .hover-lift {
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-10px);
+        }
+    </style>
+</head>
+<body>
+    <div class="particles">
+        <!-- Particles will be added via JavaScript -->
+    </div>
+    
+    <header>
+        <div class="nav container">
+            <div class="logo">EMRE.CAN</div>
+            <div class="nav-links">
+                <a href="#home" class="hover-lift">Home</a>
+                <a href="#about" class="hover-lift">About</a>
+                <a href="#contact" class="hover-lift">Contact</a>
+            </div>
+        </div>
+        
+        <div class="hero container">
+            <div class="profile-img glow-effect">
+                <!-- Replace the src with your image path -->
+                <img src="/api/placeholder/400/400" alt="Emre Can">
+            </div>
+            <h1 class="animated-element">Emre Can</h1>
+            <div class="typewriter-container">
+                <p class="typewriter">Welcome to my personal website</p>
+            </div>
+            
+            <div class="social-icons">
+                <a href="https://www.instagram.com/emre.lnc/" target="_blank" class="social-icon hover-lift">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #E1306C;">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line>
+                    </svg>
+                </a>
+                <a href="https://open.spotify.com/collection/tracks" target="_blank" class="social-icon hover-lift">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #1DB954;">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M8 14.5c2.5-1 5.5-1 8 0"></path>
+                        <path d="M6.5 12c3.5-1 7.5-1 11 0"></path>
+                        <path d="M8 9.5c2.5-1 5.5-1 8 0"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        
+        <div class="shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+            <div class="shape shape-6"></div>
+        </div>
+    </header>
+    
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title animate__animated animate__fadeIn">About Me</h2>
+            <div class="about-content">
+                <div class="about-text animate__animated animate__fadeIn">
+                    <p>Hey there! I'm Emre. Welcome to my personal space on the web.</p>
+                </div>
+                
+                <div class="bio-card animate__animated animate__fadeInUp">
+                    <h3>My Bio</h3>
+                    <div class="bio-item">
+                        <div class="bio-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </div>
+                        <div class="bio-info">15 years old</div>
+                    </div>
+                    <div class="bio-item">
+                        <div class="bio-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                        </div>
+                        <div class="bio-info">If I don't respond to messages within 24 hours, please reach out to me on Instagram</div>
+                    </div>
+                    <div class="bio-item">
+                        <div class="bio-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                        </div>
+                        <div class="bio-info">Student at OSAL</div>
+                    </div>
+                    <div class="bio-item">
+                        <div class="bio-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </div>
+                        <div class="bio-info">Passionate about music and social media</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer id="contact">
+        <div class="container">
+            <div class="social-icons" style="justify-content: center; margin-bottom: 30px;">
+                <a href="https://www.instagram.com/emre.lnc/" target="_blank" class="social-icon hover-lift">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #E1306C;">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line>
+                    </svg>
+                </a>
+                <a href="https://open.spotify.com/collection/tracks" target="_blank" class="social-icon hover-lift">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #1DB954;">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M8 14.5c2.5-1 5.5-1 8 0"></path>
+                        <path d="M6.5 12c3.5-1 7.5-1 11 0"></path>
+                        <path d="M8 9.5c2.5-1 5.5-1 8 0"></path>
+                    </svg>
+                </a>
+            </div>
+            <p class="footer-text">© 2025 Emre Can. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Animate on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate__fadeIn');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.bio-card, .about-text').forEach(element => {
+                observer.observe(element);
+            });
+            
+            // Create floating particles
+            const particlesContainer = document.querySelector('.particles');
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                particle.style.width = `${Math.random() * 5 + 1}px`;
+                particle.style.height = particle.style.width;
+                particle.style.opacity = Math.random() * 0.5;
+                particle.style.animationDuration = `${Math.random() * 20 + 10}s`;
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                particlesContainer.appendChild(particle);
